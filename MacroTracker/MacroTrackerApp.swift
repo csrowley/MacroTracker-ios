@@ -12,7 +12,7 @@ import SwiftData
 struct MacroTrackerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            MacroEntry.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,8 @@ struct MacroTrackerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePage()
+                .modelContainer(sharedModelContainer)
         }
         .modelContainer(sharedModelContainer)
     }

@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791A194E2C522345007FCBA6 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A194D2C522345007FCBA6 /* HomePage.swift */; };
+		791A19502C54BBDF007FCBA6 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */; };
+		791A19542C5628A6007FCBA6 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19532C5628A6007FCBA6 /* ProgressBar.swift */; };
+		791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */; };
 		79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049962C24147900E15814 /* MacroTrackerApp.swift */; };
 		79C049992C24147900E15814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049982C24147900E15814 /* ContentView.swift */; };
 		79C0499B2C24147900E15814 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C0499A2C24147900E15814 /* Item.swift */; };
 		79C0499D2C24147A00E15814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499C2C24147A00E15814 /* Assets.xcassets */; };
 		79C049A02C24147A00E15814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499F2C24147A00E15814 /* Preview Assets.xcassets */; };
+		79C049A72C2414B300E15814 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049A62C2414B300E15814 /* Macros.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		791A194D2C522345007FCBA6 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
+		791A19532C5628A6007FCBA6 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLogButton.swift; sourceTree = "<group>"; };
 		79C049932C24147900E15814 /* MacroTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C049962C24147900E15814 /* MacroTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTrackerApp.swift; sourceTree = "<group>"; };
 		79C049982C24147900E15814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		79C0499A2C24147900E15814 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		79C0499C2C24147A00E15814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79C0499F2C24147A00E15814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		79C049A62C2414B300E15814 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +65,15 @@
 			children = (
 				79C049962C24147900E15814 /* MacroTrackerApp.swift */,
 				79C049982C24147900E15814 /* ContentView.swift */,
+				79C049A62C2414B300E15814 /* Macros.swift */,
 				79C0499A2C24147900E15814 /* Item.swift */,
+				791A194D2C522345007FCBA6 /* HomePage.swift */,
 				79C0499C2C24147A00E15814 /* Assets.xcassets */,
 				79C0499E2C24147A00E15814 /* Preview Content */,
+				791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */,
+				791A19532C5628A6007FCBA6 /* ProgressBar.swift */,
+				791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */,
+				79F601DE2C5CA30800613C43 /* App_Fonts */,
 			);
 			path = MacroTracker;
 			sourceTree = "<group>";
@@ -68,6 +84,13 @@
 				79C0499F2C24147A00E15814 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		79F601DE2C5CA30800613C43 /* App_Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App_Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */,
+				791A19502C54BBDF007FCBA6 /* CircleProgressBar.swift in Sources */,
+				791A194E2C522345007FCBA6 /* HomePage.swift in Sources */,
+				79C049A72C2414B300E15814 /* Macros.swift in Sources */,
 				79C049992C24147900E15814 /* ContentView.swift in Sources */,
 				79C0499B2C24147900E15814 /* Item.swift in Sources */,
 				79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */,
+				791A19542C5628A6007FCBA6 /* ProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

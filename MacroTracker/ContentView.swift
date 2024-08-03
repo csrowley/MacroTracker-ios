@@ -1,61 +1,103 @@
-//
-//  ContentView.swift
-//  MacroTracker
-//
-//  Created by Chris Rowley on 6/20/24.
-//
-
 import SwiftUI
 import SwiftData
 
+class MacroManager: ObservableObject {
+    @Published var dailyCals: Int = 2000
+    @Published var dailyCarbs: Int = 275
+    @Published var dailyProtein: Int = 110
+    @Published var dailyFats: Int = 56
+}
+
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Environment(\.modelContext) private var context
+    @Query(sort: \MacroEntry.uid, order: .reverse) var allLogs: [MacroEntry] // Query to fetch all logs
+    @StateObject private var macroManager = MacroManager()
+    
+    @State private var calData: String = ""
+    @State private var carbData: String = ""
+    @State private var proteinData: String = ""
+    @State private var fatData: String = ""
+    @State private var selectedMeal: String = "Breakfast"
+    @State private var mealName: String = ""
+    
+    let dailyMeals = ["Breakfast", "Lunch", "Dinner", "Snack"]
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack {
+            Form {
+                Picker("Choose a Meal", selection: $selectedMeal) {
+                    ForEach(dailyMeals, id: \.self) { dailyMeal in
+                        Text(dailyMeal)
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                
+                HStack {
+                    Text("Meal Name:")
+                    TextField("Enter Meal Name", text: $mealName)
+                        .multilineTextAlignment(.trailing)
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                
+                Section {
+                    HStack {
+                        Text("Calories:")
+                        TextField("Enter Calorie Amount", text: $calData)
+                            .keyboardType(.numbersAndPunctuation)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack {
+                        Text("Protein (g):")
+                        TextField("Enter Protein Amount", text: $proteinData)
+                            .keyboardType(.numbersAndPunctuation)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack {
+                        Text("Carbs (g):")
+                        TextField("Enter Carb Amount", text: $carbData)
+                            .keyboardType(.numbersAndPunctuation)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack {
+                        Text("Fats (g):")
+                        TextField("Enter Fat Amount", text: $fatData)
+                            .keyboardType(.numbersAndPunctuation)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // Ensure safe unwrapping of optional values
+                            if let cals = Int(calData),
+                               let protein = Int(proteinData),
+                               let carbs = Int(carbData),
+                               let fats = Int(fatData) {
+                                logUserMacro(cals: cals, protein: protein, carb: carbs, fat: fats)
+                            } else {
+                                print("Invalid input")
+                            }
+                        }) {
+                            CircleLogButton(user_color1: Color.green, user_color2: Color.green, text: "Log", noPortal: true)
+                        }
+                        Spacer()
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
+        .background(Color(UIColor.systemGray6)) // Match the background color
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+    
+    func logUserMacro(cals: Int, protein: Int, carb: Int, fat: Int) {
+        let userEntry = MacroEntry(meal: selectedMeal, name: mealName, entryCals: cals, entryProtein: protein, entryCarb: carb, entryFat: fat)
+        context.insert(userEntry)
+        
+        do {
+            try context.save()
+            print("success")
+        } catch {
+            print("error saving entry \(error.localizedDescription)")
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
