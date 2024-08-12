@@ -10,18 +10,19 @@ import SwiftUI
 struct CircleProgressBar: View {
     let progress: Double
     let calories: Int
+    let user_color: Color
     var body: some View {
         ZStack{
             Circle()
                 .stroke(
-                    Color.purple.opacity(0.5),
+                    Color(user_color.opacity(0.5)),
                     lineWidth: 30
                 )
                         
             Circle()
                 .trim(from: 0.0, to: progress)
                 .stroke(
-                    Color.purple,
+                    Color(user_color),
                     style: StrokeStyle(
                         lineWidth: 30,
                         lineCap: .round
@@ -40,5 +41,5 @@ struct CircleProgressBar: View {
 }
 
 #Preview {
-    CircleProgressBar(progress: 0.25, calories: 2500)
+    CircleProgressBar(progress: 0.25, calories: 2500, user_color: Color.purple)
 }

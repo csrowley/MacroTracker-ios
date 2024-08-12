@@ -21,7 +21,7 @@ struct CircleLogButton: View {
         }
         .font(.title)
         .bold()
-        .padding(30)
+        .padding(20)
         .background(.white)
         .fontWeight(.heavy)
         .clipShape(.circle)
@@ -48,7 +48,7 @@ struct CircleLogButton: View {
         .shadow(color: .black.opacity(0.2), radius: 20, x:0, y:10)
         .shadow(color: .black.opacity(0.4), radius: 5, x:0, y:2)
         .sheet(isPresented: $isPresented_Log) {
-            ContentView()
+            LoggedFoodsView()
                 .presentationDetents([.medium, .large])
         }
     }

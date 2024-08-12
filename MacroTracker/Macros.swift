@@ -16,7 +16,7 @@ struct MacroVals {
 
 //will store entries as MacroEntry objects
 @Model
-class MacroEntry {
+class MacroEntry: Identifiable {
     @Attribute(.unique) var uid: UUID
     @Attribute var entryDate: Date
     @Attribute var meal: String
@@ -29,7 +29,7 @@ class MacroEntry {
     
     init(uid: UUID = UUID(), entryDate: Date = Date(), meal: String, name: String, entryCals: Int, entryProtein: Int, entryCarb: Int, entryFat: Int) {
         self.uid = uid
-        self.entryDate = entryDate
+        self.entryDate = stripTime(from: entryDate)
         self.meal = meal
         self.name = name
         self.entryCals = entryCals
@@ -38,6 +38,38 @@ class MacroEntry {
         self.entryFat = entryFat
     }
     
+}
+
+@Model
+class Meals{
+    @Attribute(.unique) var meals: String
+    @Attribute var entries: [MacroEntry]
+    
+    init(meals: String, entries: [MacroEntry] = []) {
+        self.meals = meals
+        self.entries = entries
+    }
+    
+    func addToEntries(_ entry: MacroEntry) {
+        entries.append(entry)
+    }
+}
+
+@Model
+class DailyEntries{
+    @Attribute(.unique) var uid: UUID
+    @Attribute(.unique) var date: Date
+    @Attribute var allMeals: [Meals]
+    
+    init(uid: UUID = UUID(), date: Date = Date(), allMeals: [Meals] = []) {
+        self.uid = uid
+        self.date = stripTime(from: date)
+        self.allMeals = allMeals
+    }
+    
+    func addToMeals(_ meal: Meals) {
+        allMeals.append(meal)
+    }
 }
 
 struct TargetMacros {
@@ -64,4 +96,10 @@ struct DailyProgress {
     
     var dinnerCals : Int? = 0
     var dinnerMacros : MacroEntry? = nil
+}
+
+func stripTime(from date: Date) -> Date {
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year, .month, .day], from: date)
+    return calendar.date(from: components)!
 }

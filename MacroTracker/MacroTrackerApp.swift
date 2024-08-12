@@ -13,6 +13,8 @@ struct MacroTrackerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             MacroEntry.self,
+            Meals.self,
+            DailyEntries.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
