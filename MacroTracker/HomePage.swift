@@ -40,11 +40,15 @@ struct HomePage: View {
                     Section{
                         VStack{
                             Text("Calories Remaining")
-                                .font(.title)
+                                .font(
+                                    .custom(
+                                    "Montserrat",
+                                    fixedSize: 30)
+                                )
                             HStack{
                                 Spacer()
                                 CircleProgressBar(progress: progress_cals, calories: calories, user_color: Color(lavander))
-                                    .frame(width: 250, height: 250)
+                                    .frame(width: 250, height: 225)
                                 Spacer()
                             }
                         }
@@ -62,6 +66,7 @@ struct HomePage: View {
                         VStack{
                             HStack{
                                 Text("Carbs")
+
                                 Spacer()
                             }
                             ProgressBar(progress: progress_carbs, macros: 100, user_color: Color(royal_blue)) //placeholder number
@@ -69,6 +74,7 @@ struct HomePage: View {
                         VStack{
                             HStack{
                                 Text("Fats")
+
                                 Spacer()
                             }
                             ProgressBar(progress: progress_fats, macros: 100, user_color: Color(tangerine)) //placeholder number
@@ -84,40 +90,53 @@ struct HomePage: View {
                 .scrollContentBackground(.hidden)
                 
                 
+                HStack{
+                    ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+                    CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "plus", noPortal: false)
+                    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+
+                }
                 
-                CircleLogButton(user_color1: Color(lavander), user_color2: Color.blue, text: "+", noPortal: false)
                 
-                
-                    .navigationTitle("Macrometer")
                     .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            Text("Macrometer")
+                                .font(
+                                    .custom("Montserrat", size: 30)
+                                )
+                                .foregroundColor(.white)
+                        }
+                    }
                 
             }
             
         }
+        .font(Font.custom("Lato", size: 18))
         
     }
     
     
-    private func createTodaysEntry() {
-        let mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks"]
-        
-        let newDateEntry = DailyEntries()
-        
-        for name in mealNames {
-            let newMeal = Meals(meals: name, entries: [])
-            newDateEntry.addToMeals(newMeal)
-            
-        }
-        
-        context.insert(newDateEntry)
-        
-        do {
-            try context.save()
-            print("success")
-        } catch {
-            print("error saving entry \(error.localizedDescription)")
-        }
-    }
+//    private func createTodaysEntry() {
+//        let mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks"]
+//        
+//        let newDateEntry = DailyEntries()
+//        
+//        for name in mealNames {
+//            let newMeal = Meals(meals: name, entries: [])
+//            newDateEntry.addToMeals(newMeal)
+//            
+//        }
+//        
+//        context.insert(newDateEntry)
+//        
+//        do {
+//            try context.save()
+//            print("success")
+//        } catch {
+//            print("error saving entry \(error.localizedDescription)")
+//        }
+//    }
 }
 
 

@@ -27,6 +27,8 @@ class MacroEntry: Identifiable {
     @Attribute var entryCarb: Int = 0
     @Attribute var entryFat: Int = 0
     
+    @Attribute var parentMeals: Meals?
+    
     init(uid: UUID = UUID(), entryDate: Date = Date(), meal: String, name: String, entryCals: Int, entryProtein: Int, entryCarb: Int, entryFat: Int) {
         self.uid = uid
         self.entryDate = stripTime(from: entryDate)
@@ -42,10 +44,13 @@ class MacroEntry: Identifiable {
 
 @Model
 class Meals{
+    @Attribute(.unique) var uid: UUID
     @Attribute(.unique) var meals: String
     @Attribute var entries: [MacroEntry]
+    @Attribute var parentDaily: DailyEntries?
     
-    init(meals: String, entries: [MacroEntry] = []) {
+    init(uid: UUID = UUID(), meals: String, entries: [MacroEntry] = []) {
+        self.uid = uid
         self.meals = meals
         self.entries = entries
     }
@@ -59,17 +64,23 @@ class Meals{
 class DailyEntries{
     @Attribute(.unique) var uid: UUID
     @Attribute(.unique) var date: Date
-    @Attribute var allMeals: [Meals]
     
-    init(uid: UUID = UUID(), date: Date = Date(), allMeals: [Meals] = []) {
+    @Attribute var breakfast: Meals
+    @Attribute var lunch: Meals
+    @Attribute var dinner: Meals
+    @Attribute var snacks: Meals
+    
+    init(uid: UUID = UUID(), date: Date = Date(), breakfast: Meals, lunch: Meals, dinner: Meals, snacks: Meals) {
         self.uid = uid
         self.date = stripTime(from: date)
-        self.allMeals = allMeals
+        
+        self.breakfast = Meals(meals: "breakfast")
+        self.lunch = Meals(meals: "lunch")
+        self.dinner = Meals(meals: "dinner")
+        self.snacks = Meals(meals: "snacks")
+
     }
     
-    func addToMeals(_ meal: Meals) {
-        allMeals.append(meal)
-    }
 }
 
 struct TargetMacros {

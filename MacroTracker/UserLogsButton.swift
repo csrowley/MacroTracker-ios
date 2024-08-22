@@ -1,16 +1,22 @@
+//
+//  ResetLogButton.swift
+//  MacroTracker
+//
+//  Created by Chris Rowley on 8/20/24.
+//
+
 import SwiftUI
 
-struct CircleLogButton: View {
+struct UserLogsButton: View {
     @State private var animation_count = 1.0
     @State private var isPresented_Log = false
     
     let user_color1: Color
     let user_color2: Color
-    let icon: String
     let noPortal: Bool
     
     var body: some View {
-        Button{
+        Button {
             animation_count += 1
             if noPortal == false{
                 isPresented_Log = true
@@ -18,16 +24,17 @@ struct CircleLogButton: View {
             else{
                 
             }
-        } label:{
+        } label: {
             HStack{
-                Image(systemName: icon)
+                Image(systemName: "book.pages.fill")
             }
         }
         .symbolEffect(.bounce, value: animation_count)
         
+        
         .font(.title)
         .bold()
-        .padding(30)
+        .padding(10)
         .background(.white)
         .fontWeight(.heavy)
         .clipShape(.circle)
@@ -53,21 +60,10 @@ struct CircleLogButton: View {
         )
         .shadow(color: .black.opacity(0.2), radius: 20, x:0, y:10)
         .shadow(color: .black.opacity(0.4), radius: 5, x:0, y:2)
-        .sheet(isPresented: $isPresented_Log) {
-            ContentView()
-                .presentationDetents([.medium, .large])
-        }
-    }
-}
 
-struct LogSheetView: View {
-    var body: some View {
-        Text("Log Sheet Content")
-            .font(.largeTitle)
-            .padding()
     }
 }
 
 #Preview {
-    CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "plus", noPortal: false)
+    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
 }

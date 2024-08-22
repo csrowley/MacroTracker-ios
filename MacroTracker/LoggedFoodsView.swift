@@ -18,34 +18,42 @@ struct LoggedFoodsView: View {
         NavigationStack{
 
             List{
-//                Section {
-//                    Text("Breakfast")
-//                    ForEach(allLogs){ log in
-//                        Text("\(log.entryCals) - \(log.entryDate)")
-//                    }
-//                }
-//                
-//                Section {
-//                    Text("Lunch")
-//                    ForEach(allLogs){ log in
-//                        Text("\(log.entryCals) - \(log.entryDate)")
-//                    }
-//                }
-//                
-//                Section{
-//                    Text("Dinner")
-//                    ForEach(allLogs){ log in
-//                        Text("\(log.entryCals) - \(log.entryDate)")
-//                    }
-//                }
+                Section {
+                    Text("Breakfast")
+                    ForEach(allLogs){ log in
+                        Text("\(log.entryCals) - \(log.entryDate)")
+                    }
+                }
+                
+                Section {
+                    Text("Lunch")
+                    ForEach(allLogs){ log in
+                        Text("\(log.entryCals) - \(log.entryDate)")
+                    }
+                }
+                
+                Section{
+                    Text("Dinner")
+                    ForEach(allLogs){ log in
+                        Text("\(log.entryCals) - \(log.entryDate)")
+                    }
+                }
             }
 
             
                 .navigationTitle(viewedDate)
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    Button("Reset"){
+                        Text("h")
+                    }
+                }
         }
         
+        .font(Font.custom("Lato", size: 18)) // Set your custom font and size
+
     }
+    
 }
 
 #Preview {

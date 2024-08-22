@@ -94,17 +94,30 @@ struct ContentView: View {
                                 print("Invalid input")
                             }
                         }) {
-                            CircleLogButton(user_color1: Color.green, user_color2: Color.green, text: "Log", noPortal: true)
+                            CircleLogButton(user_color1: Color.green, user_color2: Color.green, icon: "checkmark", noPortal: true)
                         }
                         Spacer()
                     }
                 }
             }
+//            .toolbar{
+//                Button("Clear Logs"){
+//                    Text("h)")
+//                }
+//            }
         }
+        .font(Font.custom("Lato", size: 18)) // Set your custom font and size
+
         .background(Color(UIColor.systemGray6)) // Match the background color
+        
+ 
     }
     
     private func logUserMacro(cals: Int, protein: Int, carb: Int, fat: Int) {
+        ///  HOW TO  STORE USER LOGS:
+        ///  - store user data initially as MacroEntry object.
+        ///  - for the corresponding meal, store in the respective day's meal attribute in DailyEntry object
+        ///  - There should be a corresponding DailyEntry object for the day (or allow user to reset / create a new day when needed)
         let userEntry = MacroEntry(meal: selectedMeal, name: mealName, entryCals: cals, entryProtein: protein, entryCarb: carb, entryFat: fat)
         context.insert(userEntry)
         

@@ -33,7 +33,8 @@ struct CircleProgressBar: View {
                 .animation(.easeOut, value: progress)
             
             Text(String(calories))
-                .font(.title)
+                .font(Font.custom("Montserrat-Bold", size: 35)) // Set your custom font and size
+
 
         }
         .frame(width: 200, height: 200)

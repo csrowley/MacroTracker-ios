@@ -11,12 +11,25 @@
 		791A19502C54BBDF007FCBA6 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */; };
 		791A19542C5628A6007FCBA6 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19532C5628A6007FCBA6 /* ProgressBar.swift */; };
 		791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */; };
+		797CFE9D2C75CB9C00F7F3A4 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFE9C2C75CB9C00F7F3A4 /* Lato-Regular.ttf */; };
+		797CFEA12C75CBB600F7F3A4 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEA02C75CBB600F7F3A4 /* Montserrat-Regular.ttf */; };
+		797CFEB32C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEAE2C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf */; };
+		797CFEB52C75CC6400F7F3A4 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEB02C75CC6400F7F3A4 /* Montserrat-LightItalic.ttf */; };
+		797CFEB62C75CC6400F7F3A4 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEB12C75CC6400F7F3A4 /* Montserrat-ExtraLightItalic.ttf */; };
+		797CFEB72C75CC6400F7F3A4 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEB22C75CC6400F7F3A4 /* Montserrat-Light.ttf */; };
+		797CFEB92C75CC6F00F7F3A4 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEB82C75CC6F00F7F3A4 /* Montserrat-Thin.ttf */; };
+		797CFEBB2C75CC8700F7F3A4 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEBA2C75CC8700F7F3A4 /* Lato-Light.ttf */; };
+		797CFEBD2C75CC8E00F7F3A4 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEBC2C75CC8E00F7F3A4 /* Lato-Thin.ttf */; };
+		797CFEC22C75CEBE00F7F3A4 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEC12C75CEBE00F7F3A4 /* Montserrat-Bold.ttf */; };
+		797CFEC52C75D07F00F7F3A4 /* MyFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797CFEC42C75D07F00F7F3A4 /* MyFontExtensions.swift */; };
 		79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049962C24147900E15814 /* MacroTrackerApp.swift */; };
 		79C049992C24147900E15814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049982C24147900E15814 /* ContentView.swift */; };
 		79C0499B2C24147900E15814 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C0499A2C24147900E15814 /* Item.swift */; };
 		79C0499D2C24147A00E15814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499C2C24147A00E15814 /* Assets.xcassets */; };
 		79C049A02C24147A00E15814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499F2C24147A00E15814 /* Preview Assets.xcassets */; };
 		79C049A72C2414B300E15814 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049A62C2414B300E15814 /* Macros.swift */; };
+		79EB75C32C75A6600063FDCE /* ResetLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB75C22C75A65F0063FDCE /* ResetLogButton.swift */; };
+		79EB75C52C75ADD50063FDCE /* UserLogsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB75C42C75ADD50063FDCE /* UserLogsButton.swift */; };
 		79F601E12C61E8F600613C43 /* LoggedFoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F601E02C61E8F600613C43 /* LoggedFoodsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +38,18 @@
 		791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		791A19532C5628A6007FCBA6 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLogButton.swift; sourceTree = "<group>"; };
+		797CFE9C2C75CB9C00F7F3A4 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		797CFEA02C75CBB600F7F3A4 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		797CFEAE2C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		797CFEB02C75CC6400F7F3A4 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		797CFEB12C75CC6400F7F3A4 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		797CFEB22C75CC6400F7F3A4 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		797CFEB82C75CC6F00F7F3A4 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		797CFEBA2C75CC8700F7F3A4 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		797CFEBC2C75CC8E00F7F3A4 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		797CFEBE2C75CD5C00F7F3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		797CFEC12C75CEBE00F7F3A4 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../Downloads/Lato,Montserrat,Roboto/Montserrat/static/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		797CFEC42C75D07F00F7F3A4 /* MyFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFontExtensions.swift; sourceTree = "<group>"; };
 		79C049932C24147900E15814 /* MacroTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C049962C24147900E15814 /* MacroTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTrackerApp.swift; sourceTree = "<group>"; };
 		79C049982C24147900E15814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +57,8 @@
 		79C0499C2C24147A00E15814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79C0499F2C24147A00E15814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		79C049A62C2414B300E15814 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
+		79EB75C22C75A65F0063FDCE /* ResetLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLogButton.swift; sourceTree = "<group>"; };
+		79EB75C42C75ADD50063FDCE /* UserLogsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogsButton.swift; sourceTree = "<group>"; };
 		79F601E02C61E8F600613C43 /* LoggedFoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedFoodsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +92,7 @@
 		79C049952C24147900E15814 /* MacroTracker */ = {
 			isa = PBXGroup;
 			children = (
+				797CFEBE2C75CD5C00F7F3A4 /* Info.plist */,
 				79C049962C24147900E15814 /* MacroTrackerApp.swift */,
 				79C049982C24147900E15814 /* ContentView.swift */,
 				79C049A62C2414B300E15814 /* Macros.swift */,
@@ -77,6 +105,9 @@
 				791A194F2C54BBDF007FCBA6 /* CircleProgressBar.swift */,
 				791A19532C5628A6007FCBA6 /* ProgressBar.swift */,
 				79F601DE2C5CA30800613C43 /* App_Fonts */,
+				79EB75C22C75A65F0063FDCE /* ResetLogButton.swift */,
+				79EB75C42C75ADD50063FDCE /* UserLogsButton.swift */,
+				797CFEC42C75D07F00F7F3A4 /* MyFontExtensions.swift */,
 			);
 			path = MacroTracker;
 			sourceTree = "<group>";
@@ -92,6 +123,16 @@
 		79F601DE2C5CA30800613C43 /* App_Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				797CFEC12C75CEBE00F7F3A4 /* Montserrat-Bold.ttf */,
+				797CFEBC2C75CC8E00F7F3A4 /* Lato-Thin.ttf */,
+				797CFEBA2C75CC8700F7F3A4 /* Lato-Light.ttf */,
+				797CFEB82C75CC6F00F7F3A4 /* Montserrat-Thin.ttf */,
+				797CFEAE2C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf */,
+				797CFEB12C75CC6400F7F3A4 /* Montserrat-ExtraLightItalic.ttf */,
+				797CFEB22C75CC6400F7F3A4 /* Montserrat-Light.ttf */,
+				797CFEB02C75CC6400F7F3A4 /* Montserrat-LightItalic.ttf */,
+				797CFEA02C75CBB600F7F3A4 /* Montserrat-Regular.ttf */,
+				797CFE9C2C75CB9C00F7F3A4 /* Lato-Regular.ttf */,
 			);
 			path = App_Fonts;
 			sourceTree = "<group>";
@@ -154,8 +195,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				797CFEBB2C75CC8700F7F3A4 /* Lato-Light.ttf in Resources */,
+				797CFEA12C75CBB600F7F3A4 /* Montserrat-Regular.ttf in Resources */,
+				797CFEB72C75CC6400F7F3A4 /* Montserrat-Light.ttf in Resources */,
 				79C049A02C24147A00E15814 /* Preview Assets.xcassets in Resources */,
+				797CFEB52C75CC6400F7F3A4 /* Montserrat-LightItalic.ttf in Resources */,
+				797CFEB92C75CC6F00F7F3A4 /* Montserrat-Thin.ttf in Resources */,
+				797CFEB62C75CC6400F7F3A4 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				797CFEB32C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf in Resources */,
 				79C0499D2C24147A00E15814 /* Assets.xcassets in Resources */,
+				797CFEBD2C75CC8E00F7F3A4 /* Lato-Thin.ttf in Resources */,
+				797CFEC22C75CEBE00F7F3A4 /* Montserrat-Bold.ttf in Resources */,
+				797CFE9D2C75CB9C00F7F3A4 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,12 +219,15 @@
 			files = (
 				791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */,
 				791A19502C54BBDF007FCBA6 /* CircleProgressBar.swift in Sources */,
+				79EB75C52C75ADD50063FDCE /* UserLogsButton.swift in Sources */,
 				791A194E2C522345007FCBA6 /* HomePage.swift in Sources */,
 				79C049A72C2414B300E15814 /* Macros.swift in Sources */,
 				79F601E12C61E8F600613C43 /* LoggedFoodsView.swift in Sources */,
 				79C049992C24147900E15814 /* ContentView.swift in Sources */,
 				79C0499B2C24147900E15814 /* Item.swift in Sources */,
 				79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */,
+				79EB75C32C75A6600063FDCE /* ResetLogButton.swift in Sources */,
+				797CFEC52C75D07F00F7F3A4 /* MyFontExtensions.swift in Sources */,
 				791A19542C5628A6007FCBA6 /* ProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +364,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MacroTracker/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacroTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -338,6 +393,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MacroTracker/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacroTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
