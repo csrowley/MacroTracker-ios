@@ -8,10 +8,10 @@
 import Foundation
 import SwiftData
 
-struct MacroVals {
-    let protein: Int = 4
-    let carb: Int = 4
-    let fat: Int = 9
+enum MacroVals{
+    case protein(_ val: Int)
+    case carb(_ val: Int)
+    case fat(_ val: Int)
 }
 
 //will store entries as MacroEntry objects

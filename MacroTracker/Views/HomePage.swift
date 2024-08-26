@@ -5,13 +5,17 @@ struct HomePage: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries] // Query to fetch all logs
     
+    @AppStorage("setCalories") private var dailyCals: Int!
+    @AppStorage("setCarbs") private var dailyCarbs: Int!
+    @AppStorage("setProtein") private var dailyProteins: Int!
+    @AppStorage("setFats") private var dailyFats: Int!
     
-    @State var progress_cals: Double = 0.25
-    @State var progress_protein: Double = 0.25
-    @State var progress_carbs: Double = 0.25
-    @State var progress_fats: Double = 0.25
+    @State var progress_cals: Double = 0
+    @State var progress_protein: Double = 0
+    @State var progress_carbs: Double = 0
+    @State var progress_fats: Double = 0
     
-    @State var calories: Int = 2500
+//    @State var calories: Int = 2500
     
     @State var isPresented_Log = false
     
@@ -42,12 +46,12 @@ struct HomePage: View {
                             Text("Calories Remaining")
                                 .font(
                                     .custom(
-                                    "Montserrat",
+                                    "Lato",
                                     fixedSize: 30)
                                 )
                             HStack{
                                 Spacer()
-                                CircleProgressBar(progress: progress_cals, calories: calories, user_color: Color(lavander))
+                                CircleProgressBar(progress: progress_cals, calories: dailyCals, user_color: Color(lavander))
                                     .frame(width: 250, height: 225)
                                 Spacer()
                             }
@@ -61,23 +65,32 @@ struct HomePage: View {
                                 Text("Protein")
                                 Spacer()
                             }
-                            ProgressBar(progress: progress_protein, macros: 100, user_color: Color(scarlet)) //placeholder number
+                            ProgressBar(progress: progress_protein,
+                                        macros: Int((Double(dailyProteins) / 100) * Double(dailyCals)) / 4,
+                                        user_color: Color(scarlet))
+
+                            //placeholder number
                         }
                         VStack{
                             HStack{
                                 Text("Carbs")
-
+                                
                                 Spacer()
                             }
-                            ProgressBar(progress: progress_carbs, macros: 100, user_color: Color(royal_blue)) //placeholder number
+                            ProgressBar(progress: progress_carbs,
+                                        macros: Int((Double(dailyCarbs) / 100) * Double(dailyCals)) / 4,
+                                        user_color: Color(royal_blue))
                         }
                         VStack{
                             HStack{
                                 Text("Fats")
-
+                                
                                 Spacer()
                             }
-                            ProgressBar(progress: progress_fats, macros: 100, user_color: Color(tangerine)) //placeholder number
+                                
+                            ProgressBar(progress: progress_fats,
+                                        macros: Int((Double(dailyFats) / 100) * Double(dailyCals)) / 9,
+                                        user_color: Color(tangerine))
                         }
                         
                     }
@@ -107,6 +120,15 @@ struct HomePage: View {
                                 )
                                 .foregroundColor(.white)
                         }
+                        ToolbarItem{
+                            NavigationLink(destination: SettingsView()){
+                                Image(systemName: "gearshape.fill")
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(Color(.white))
+                            }
+                                    
+        
+                        }
                     }
                 
             }
@@ -115,28 +137,6 @@ struct HomePage: View {
         .font(Font.custom("Lato", size: 18))
         
     }
-    
-    
-//    private func createTodaysEntry() {
-//        let mealNames = ["Breakfast", "Lunch", "Dinner", "Snacks"]
-//        
-//        let newDateEntry = DailyEntries()
-//        
-//        for name in mealNames {
-//            let newMeal = Meals(meals: name, entries: [])
-//            newDateEntry.addToMeals(newMeal)
-//            
-//        }
-//        
-//        context.insert(newDateEntry)
-//        
-//        do {
-//            try context.save()
-//            print("success")
-//        } catch {
-//            print("error saving entry \(error.localizedDescription)")
-//        }
-//    }
 }
 
 

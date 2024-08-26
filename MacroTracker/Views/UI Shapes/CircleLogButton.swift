@@ -15,9 +15,6 @@ struct CircleLogButton: View {
             if noPortal == false{
                 isPresented_Log = true
             }
-            else{
-                
-            }
         } label:{
             HStack{
                 Image(systemName: icon)
@@ -60,13 +57,13 @@ struct CircleLogButton: View {
     }
 }
 
-struct LogSheetView: View {
-    var body: some View {
-        Text("Log Sheet Content")
-            .font(.largeTitle)
-            .padding()
-    }
-}
+//struct LogSheetView: View {
+//    var body: some View {
+//        Text("Log Sheet Content")
+//            .font(.largeTitle)
+//            .padding()
+//    }
+//}
 
 #Preview {
     CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "plus", noPortal: false)
