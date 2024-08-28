@@ -12,6 +12,10 @@
 		791A19542C5628A6007FCBA6 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19532C5628A6007FCBA6 /* ProgressBar.swift */; };
 		791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */; };
 		792BB1902C7C2BAC0080C212 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792BB18F2C7C2BAC0080C212 /* SettingsView.swift */; };
+		7949232F2C7C6391009B211D /* EnterMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949232E2C7C6391009B211D /* EnterMealViewModel.swift */; };
+		794923312C7D633A009B211D /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794923302C7D633A009B211D /* HomePageViewModel.swift */; };
+		794923332C7D6D78009B211D /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794923322C7D6D78009B211D /* FirstLaunchView.swift */; };
+		794923352C7D6E0F009B211D /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794923342C7D6E0F009B211D /* FirstLaunchViewModel.swift */; };
 		797CFE9D2C75CB9C00F7F3A4 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFE9C2C75CB9C00F7F3A4 /* Lato-Regular.ttf */; };
 		797CFEA12C75CBB600F7F3A4 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEA02C75CBB600F7F3A4 /* Montserrat-Regular.ttf */; };
 		797CFEB32C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEAE2C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf */; };
@@ -23,10 +27,9 @@
 		797CFEBD2C75CC8E00F7F3A4 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEBC2C75CC8E00F7F3A4 /* Lato-Thin.ttf */; };
 		797CFEC22C75CEBE00F7F3A4 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797CFEC12C75CEBE00F7F3A4 /* Montserrat-Bold.ttf */; };
 		797CFEC52C75D07F00F7F3A4 /* MyFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797CFEC42C75D07F00F7F3A4 /* MyFontExtensions.swift */; };
-		79A474DB2C79A2B700A2E723 /* MacrosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A474DA2C79A2B700A2E723 /* MacrosViewModel.swift */; };
 		79A95FFC2C76E1C000D77376 /* SetUserGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A95FFB2C76E1C000D77376 /* SetUserGoalsView.swift */; };
 		79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049962C24147900E15814 /* MacroTrackerApp.swift */; };
-		79C049992C24147900E15814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049982C24147900E15814 /* ContentView.swift */; };
+		79C049992C24147900E15814 /* EnterMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C049982C24147900E15814 /* EnterMealView.swift */; };
 		79C0499B2C24147900E15814 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C0499A2C24147900E15814 /* Item.swift */; };
 		79C0499D2C24147A00E15814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499C2C24147A00E15814 /* Assets.xcassets */; };
 		79C049A02C24147A00E15814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C0499F2C24147A00E15814 /* Preview Assets.xcassets */; };
@@ -42,6 +45,10 @@
 		791A19532C5628A6007FCBA6 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		791A19552C58CDBF007FCBA6 /* CircleLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLogButton.swift; sourceTree = "<group>"; };
 		792BB18F2C7C2BAC0080C212 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7949232E2C7C6391009B211D /* EnterMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMealViewModel.swift; sourceTree = "<group>"; };
+		794923302C7D633A009B211D /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		794923322C7D6D78009B211D /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
+		794923342C7D6E0F009B211D /* FirstLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewModel.swift; sourceTree = "<group>"; };
 		797CFE9C2C75CB9C00F7F3A4 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		797CFEA02C75CBB600F7F3A4 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		797CFEAE2C75CC6400F7F3A4 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -54,11 +61,10 @@
 		797CFEBE2C75CD5C00F7F3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		797CFEC12C75CEBE00F7F3A4 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../Downloads/Lato,Montserrat,Roboto/Montserrat/static/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		797CFEC42C75D07F00F7F3A4 /* MyFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFontExtensions.swift; sourceTree = "<group>"; };
-		79A474DA2C79A2B700A2E723 /* MacrosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosViewModel.swift; sourceTree = "<group>"; };
 		79A95FFB2C76E1C000D77376 /* SetUserGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserGoalsView.swift; sourceTree = "<group>"; };
 		79C049932C24147900E15814 /* MacroTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C049962C24147900E15814 /* MacroTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTrackerApp.swift; sourceTree = "<group>"; };
-		79C049982C24147900E15814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		79C049982C24147900E15814 /* EnterMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMealView.swift; sourceTree = "<group>"; };
 		79C0499A2C24147900E15814 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		79C0499C2C24147A00E15814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79C0499F2C24147A00E15814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -84,10 +90,11 @@
 			children = (
 				79A474D82C799FDE00A2E723 /* UI Shapes */,
 				791A194D2C522345007FCBA6 /* HomePage.swift */,
-				79C049982C24147900E15814 /* ContentView.swift */,
+				79C049982C24147900E15814 /* EnterMealView.swift */,
 				79F601E02C61E8F600613C43 /* LoggedFoodsView.swift */,
 				79A95FFB2C76E1C000D77376 /* SetUserGoalsView.swift */,
 				792BB18F2C7C2BAC0080C212 /* SettingsView.swift */,
+				794923322C7D6D78009B211D /* FirstLaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,7 +123,9 @@
 		79A474D92C79A00F00A2E723 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				79A474DA2C79A2B700A2E723 /* MacrosViewModel.swift */,
+				7949232E2C7C6391009B211D /* EnterMealViewModel.swift */,
+				794923302C7D633A009B211D /* HomePageViewModel.swift */,
+				794923342C7D6E0F009B211D /* FirstLaunchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -259,15 +268,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				792BB1902C7C2BAC0080C212 /* SettingsView.swift in Sources */,
+				7949232F2C7C6391009B211D /* EnterMealViewModel.swift in Sources */,
 				791A19562C58CDBF007FCBA6 /* CircleLogButton.swift in Sources */,
 				791A19502C54BBDF007FCBA6 /* CircleProgressBar.swift in Sources */,
+				794923352C7D6E0F009B211D /* FirstLaunchViewModel.swift in Sources */,
+				794923332C7D6D78009B211D /* FirstLaunchView.swift in Sources */,
+				794923312C7D633A009B211D /* HomePageViewModel.swift in Sources */,
 				79EB75C52C75ADD50063FDCE /* UserLogsButton.swift in Sources */,
 				79A95FFC2C76E1C000D77376 /* SetUserGoalsView.swift in Sources */,
 				791A194E2C522345007FCBA6 /* HomePage.swift in Sources */,
-				79A474DB2C79A2B700A2E723 /* MacrosViewModel.swift in Sources */,
 				79C049A72C2414B300E15814 /* Macros.swift in Sources */,
 				79F601E12C61E8F600613C43 /* LoggedFoodsView.swift in Sources */,
-				79C049992C24147900E15814 /* ContentView.swift in Sources */,
+				79C049992C24147900E15814 /* EnterMealView.swift in Sources */,
 				79C0499B2C24147900E15814 /* Item.swift in Sources */,
 				79C049972C24147900E15814 /* MacroTrackerApp.swift in Sources */,
 				79EB75C32C75A6600063FDCE /* ResetLogButton.swift in Sources */,

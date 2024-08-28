@@ -27,7 +27,7 @@ class MacroEntry: Identifiable {
     @Attribute var entryCarb: Int = 0
     @Attribute var entryFat: Int = 0
     
-    @Attribute var parentMeals: Meals?
+    @Relationship(deleteRule: .cascade, inverse: \Meals.entries) var parentMeals: Meals?
     
     init(uid: UUID = UUID(), entryDate: Date = Date(), meal: String, name: String, entryCals: Int, entryProtein: Int, entryCarb: Int, entryFat: Int) {
         self.uid = uid
@@ -46,13 +46,11 @@ class MacroEntry: Identifiable {
 class Meals{
     @Attribute(.unique) var uid: UUID
     @Attribute(.unique) var meals: String
-    @Attribute var entries: [MacroEntry]
-    @Attribute var parentDaily: DailyEntries?
+    @Relationship(deleteRule: .cascade, inverse: \MacroEntry.meal) var entries: [MacroEntry] = []
     
-    init(uid: UUID = UUID(), meals: String, entries: [MacroEntry] = []) {
+    init(uid: UUID = UUID(), meals: String) {
         self.uid = uid
         self.meals = meals
-        self.entries = entries
     }
     
     func addToEntries(_ entry: MacroEntry) {
@@ -65,36 +63,22 @@ class DailyEntries{
     @Attribute(.unique) var uid: UUID
     @Attribute(.unique) var date: Date
     
-    @Attribute var breakfast: Meals
-    @Attribute var lunch: Meals
-    @Attribute var dinner: Meals
-    @Attribute var snacks: Meals
+    @Relationship var breakfast: Meals
+    @Relationship var lunch: Meals
+    @Relationship var dinner: Meals
+    @Relationship var snacks: Meals
     
     init(uid: UUID = UUID(), date: Date = Date(), breakfast: Meals, lunch: Meals, dinner: Meals, snacks: Meals) {
         self.uid = uid
         self.date = stripTime(from: date)
         
-        self.breakfast = Meals(meals: "breakfast")
-        self.lunch = Meals(meals: "lunch")
-        self.dinner = Meals(meals: "dinner")
-        self.snacks = Meals(meals: "snacks")
+        self.breakfast = breakfast
+        self.lunch = lunch
+        self.dinner = dinner
+        self.snacks = snacks
 
     }
     
-}
-
-struct TargetMacros {
-    private(set) var targetCalories: Int = 2000
-    private(set) var targetProtein: Int = 150
-    private(set) var targetCarb: Int = 250
-    private(set) var targetFat: Int = 70
-    
-    mutating func setTargetMacros(cals: Int = 0, protein: Int = 0, carb: Int = 0, fat: Int = 0) {
-        targetCalories = cals
-        targetProtein = protein
-        targetCarb = carb
-        targetFat = fat
-    }
 }
 
 //user will fill out the macros and calories, and will be sent to DailyGoals object

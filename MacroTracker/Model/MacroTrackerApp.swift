@@ -28,7 +28,6 @@ struct MacroTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             HomePage()
-                .environment(\.font, Font.custom("Montserrat", size: 18)) 
                 .modelContainer(sharedModelContainer)
         }
         .modelContainer(sharedModelContainer)

@@ -2,20 +2,21 @@ import SwiftUI
 import SwiftData
 
 struct HomePage: View {
+    @AppStorage("firstTimeLaunch") private var checkFirstLaunch: Bool = true
+    @AppStorage("showHome") private var showHomeButton: Bool = false
+
+    @State private var viewModel = ViewModel()
+
+    
     @Environment(\.modelContext) private var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries] // Query to fetch all logs
     
-    @AppStorage("setCalories") private var dailyCals: Int!
-    @AppStorage("setCarbs") private var dailyCarbs: Int!
-    @AppStorage("setProtein") private var dailyProteins: Int!
-    @AppStorage("setFats") private var dailyFats: Int!
+    @AppStorage("setCalories") private var dailyCals: Int = 2600
+
+    @AppStorage("setProtein") private var dailyProteins: Int = 25
+    @AppStorage("setCarbs") private var dailyCarbs: Int = 50
+    @AppStorage("setFats") private var dailyFats: Int = 25
     
-    @State var progress_cals: Double = 0
-    @State var progress_protein: Double = 0
-    @State var progress_carbs: Double = 0
-    @State var progress_fats: Double = 0
-    
-//    @State var calories: Int = 2500
     
     @State var isPresented_Log = false
     
@@ -38,7 +39,6 @@ struct HomePage: View {
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 Form{
                     Section{
@@ -51,7 +51,7 @@ struct HomePage: View {
                                 )
                             HStack{
                                 Spacer()
-                                CircleProgressBar(progress: progress_cals, calories: dailyCals, user_color: Color(lavander))
+                                CircleProgressBar(progress: viewModel.progress_cals, calories: dailyCals, user_color: Color(lavander))
                                     .frame(width: 250, height: 225)
                                 Spacer()
                             }
@@ -65,11 +65,11 @@ struct HomePage: View {
                                 Text("Protein")
                                 Spacer()
                             }
-                            ProgressBar(progress: progress_protein,
+                            ProgressBar(progress: viewModel.progress_protein,
                                         macros: Int((Double(dailyProteins) / 100) * Double(dailyCals)) / 4,
                                         user_color: Color(scarlet))
 
-                            //placeholder number
+                            
                         }
                         VStack{
                             HStack{
@@ -77,7 +77,7 @@ struct HomePage: View {
                                 
                                 Spacer()
                             }
-                            ProgressBar(progress: progress_carbs,
+                            ProgressBar(progress: viewModel.progress_carbs,
                                         macros: Int((Double(dailyCarbs) / 100) * Double(dailyCals)) / 4,
                                         user_color: Color(royal_blue))
                         }
@@ -88,7 +88,7 @@ struct HomePage: View {
                                 Spacer()
                             }
                                 
-                            ProgressBar(progress: progress_fats,
+                            ProgressBar(progress: viewModel.progress_fats,
                                         macros: Int((Double(dailyFats) / 100) * Double(dailyCals)) / 9,
                                         user_color: Color(tangerine))
                         }
@@ -99,11 +99,16 @@ struct HomePage: View {
                     
                 }
                 
-                .background(Color.clear) // Match the background color
+                .background(Color.clear)
                 .scrollContentBackground(.hidden)
                 
                 
                 HStack{
+                    Button("press"){
+                        checkFirstLaunch.toggle()
+                        showHomeButton.toggle()
+                        
+                    }
                     ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
                     CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "plus", noPortal: false)
                     UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
@@ -135,7 +140,10 @@ struct HomePage: View {
             
         }
         .font(Font.custom("Lato", size: 18))
-        
+        .fullScreenCover(isPresented: $checkFirstLaunch, content: {
+            FirstLaunchView()
+//            checkFirstLaunch = false
+        })
     }
 }
 

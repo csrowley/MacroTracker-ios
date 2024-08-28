@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct SetUserGoalsView: View {
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("showHome") private var showHomeButton: Bool = false
+    
     @AppStorage("setCalories") private var setCalories: Int = 2600
+    @AppStorage("firstTimeLaunch") private var checkFirstLaunch: Bool?
+
     @State var strCals: String = ""
 
     @AppStorage("setProtein") private var setProtein: Int = 25
@@ -80,7 +85,11 @@ struct SetUserGoalsView: View {
                         } label: {
                             HStack{
                                 Spacer()
-                                CircleLogButton(user_color1: Color.green, user_color2: Color.green, icon: "checkmark", noPortal: true)
+                                Button{
+                                    showHomeButton = true
+                                }label:{
+                                    CircleLogButton(user_color1: Color.green, user_color2: Color.green, icon: "checkmark", noPortal: true)
+                                }
                                 Spacer()
                                 
                             }
@@ -99,6 +108,7 @@ struct SetUserGoalsView: View {
             .toolbar{
                 ToolbarItem(placement: .principal){
                     Text("Set Your Goals")
+                        .bold()
                 }
             }
         }

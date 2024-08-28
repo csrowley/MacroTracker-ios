@@ -11,7 +11,6 @@ import SwiftData
 struct LoggedFoodsView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \MacroEntry.uid, order: .reverse) var allLogs: [MacroEntry]
-//    @StateObject private var macroManager = MacroManager()
     
     @State private var viewedDate: String = "Today"
     var body: some View {
@@ -19,21 +18,7 @@ struct LoggedFoodsView: View {
 
             List{
                 Section {
-                    Text("Breakfast")
-                    ForEach(allLogs){ log in
-                        Text("\(log.entryCals) - \(log.entryDate)")
-                    }
-                }
-                
-                Section {
-                    Text("Lunch")
-                    ForEach(allLogs){ log in
-                        Text("\(log.entryCals) - \(log.entryDate)")
-                    }
-                }
-                
-                Section{
-                    Text("Dinner")
+                    Text("Test")
                     ForEach(allLogs){ log in
                         Text("\(log.entryCals) - \(log.entryDate)")
                     }

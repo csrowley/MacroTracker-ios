@@ -14,14 +14,14 @@ struct CircleLogButton: View {
             animation_count += 1
             if noPortal == false{
                 isPresented_Log = true
+                
+//            @AppStorage("firstTimeLaunch") var checkFirstLaunch: Bool = false
+                
+
             }
         } label:{
-            HStack{
-                Image(systemName: icon)
-            }
-        }
-        .symbolEffect(.bounce, value: animation_count)
-        
+            Image(systemName: icon)
+        }        
         .font(.title)
         .bold()
         .padding(30)
@@ -51,7 +51,7 @@ struct CircleLogButton: View {
         .shadow(color: .black.opacity(0.2), radius: 20, x:0, y:10)
         .shadow(color: .black.opacity(0.4), radius: 5, x:0, y:2)
         .sheet(isPresented: $isPresented_Log) {
-            ContentView()
+            EnterMealView()
                 .presentationDetents([.medium, .large])
         }
     }
