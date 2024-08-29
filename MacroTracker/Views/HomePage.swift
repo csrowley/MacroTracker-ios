@@ -4,18 +4,21 @@ import SwiftData
 struct HomePage: View {
     @AppStorage("firstTimeLaunch") private var checkFirstLaunch: Bool = true
     @AppStorage("showHome") private var showHomeButton: Bool = false
-
-    @State private var viewModel = ViewModel()
-
+    @AppStorage("setCalories") private var dailyCals: Int = 2600
+    @AppStorage("setProtein") private var dailyProteins: Int = 100
+    @AppStorage("setCarbs") private var dailyCarbs: Int = 100
+    @AppStorage("setFats") private var dailyFats: Int = 100
     
+//    @AppStorage("calProgress") private var calProgress: Int = 0
+//    @AppStorage("proteinProgress") private var proteinProgress: Int?
+//    @AppStorage("carbProgress") private var carbProgress: Int?
+//    @AppStorage("fatProgress") private var fatProgress: Int?
+    
+    @State private var viewModel = ViewModel()
     @Environment(\.modelContext) private var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries] // Query to fetch all logs
     
-    @AppStorage("setCalories") private var dailyCals: Int = 2600
 
-    @AppStorage("setProtein") private var dailyProteins: Int = 25
-    @AppStorage("setCarbs") private var dailyCarbs: Int = 50
-    @AppStorage("setFats") private var dailyFats: Int = 25
     
     
     @State var isPresented_Log = false
@@ -25,6 +28,8 @@ struct HomePage: View {
     let royal_blue = UIColor(red: 48/255.0, green: 92/255.0, blue: 222/255.0, alpha: 1.0)
     let scarlet = UIColor(red: 0.91, green: 0.196, blue: 0.337, alpha: 1)
     let tangerine = UIColor(red: 1, green: 0.659, blue: 0, alpha: 1)
+    
+    
     
     init() {
         // Set the appearance of UINavigationBar with a lighter purple color
@@ -38,6 +43,7 @@ struct HomePage: View {
     }
     
     var body: some View {
+
         NavigationStack {
             VStack {
                 Form{
@@ -51,7 +57,8 @@ struct HomePage: View {
                                 )
                             HStack{
                                 Spacer()
-                                CircleProgressBar(progress: viewModel.progress_cals, calories: dailyCals, user_color: Color(lavander))
+                                var checkCalProgress = allDays.first?.calProgress ?? 0
+                                CircleProgressBar(progress: checkCalProgress, calories: abs(dailyCals - checkCalProgress), user_color: Color(lavander))
                                     .frame(width: 250, height: 225)
                                 Spacer()
                             }
@@ -59,41 +66,33 @@ struct HomePage: View {
                     }
                     
                     
-                    Section{
-                        VStack{
-                            HStack{
+                    Section {
+                        VStack {
+                            HStack {
                                 Text("Protein")
                                 Spacer()
                             }
-                            ProgressBar(progress: viewModel.progress_protein,
-                                        macros: Int((Double(dailyProteins) / 100) * Double(dailyCals)) / 4,
-                                        user_color: Color(scarlet))
-
-                            
+                            var checkProteinProgress = allDays.first?.proteinProgress ?? 0
+                            ProgressBar(progress: Double(checkProteinProgress / 100), macros: abs(checkProteinProgress - dailyProteins), user_color: Color(scarlet))
                         }
-                        VStack{
-                            HStack{
+                        VStack {
+                            HStack {
                                 Text("Carbs")
-                                
                                 Spacer()
                             }
-                            ProgressBar(progress: viewModel.progress_carbs,
-                                        macros: Int((Double(dailyCarbs) / 100) * Double(dailyCals)) / 4,
-                                        user_color: Color(royal_blue))
+                            var checkCarbProgress = allDays.first?.carbProgress ?? 0
+                            ProgressBar(progress: Double(checkCarbProgress / 100), macros: abs(checkCarbProgress - dailyCarbs), user_color: Color(royal_blue))
                         }
-                        VStack{
-                            HStack{
+                        VStack {
+                            HStack {
                                 Text("Fats")
-                                
                                 Spacer()
                             }
-                                
-                            ProgressBar(progress: viewModel.progress_fats,
-                                        macros: Int((Double(dailyFats) / 100) * Double(dailyCals)) / 9,
-                                        user_color: Color(tangerine))
+                            var checkFatProgress = allDays.first?.fatProgress ?? 0
+                            ProgressBar(progress: Double(checkFatProgress / 100), macros: abs(checkFatProgress - dailyFats), user_color: Color(tangerine))
                         }
-                        
                     }
+
                     .scrollContentBackground(.hidden)
                     
                     
@@ -144,7 +143,18 @@ struct HomePage: View {
             FirstLaunchView()
 //            checkFirstLaunch = false
         })
+        
+
     }
+    	
+//    func addProgress(cals: Int, protein: Int, carbs: Int, fats: Int){
+//        if let calProgress,
+//           let proteinProgress,
+//           let carbProgress,
+//           let fatProgress{
+//            
+//        }
+//    }
 }
 
 

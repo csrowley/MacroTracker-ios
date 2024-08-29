@@ -20,16 +20,18 @@ struct SetUserGoalsView: View {
     @AppStorage("setCarbs") private var setCarbs: Int = 50
     @AppStorage("setFats") private var setFats: Int = 25
     
-    @State private var proteinPlaceholder: Int = 25
-    @State private var carbPlaceholder: Int = 50
-    @State private var fatsPlaceholder: Int = 25
+//    @AppStorage("progressCals") private var progressCals: Int
+    
+    @State private var dummmyProtein: Int = 25
+    @State private var dummmyCarbs: Int = 50
+    @State private var dummmyFats: Int = 25
     
     @State private var showPercentAlert = false
     @State private var percentTotal = 0
     
     let pickerRange = stride(from: 0, to: 100, by: 5)
     var body: some View {
-        let percentSum = setProtein + setCarbs + setFats
+        let percentSum = dummmyProtein + dummmyCarbs + dummmyFats
         
         NavigationStack{
             ZStack{
@@ -48,19 +50,19 @@ struct SetUserGoalsView: View {
                         HStack{
                             Text("Carbs:")
                             
-                            Picker("", selection: $setCarbs){
+                            Picker("", selection: $dummmyCarbs){
                                 ForEach(0..<21, id: \.self){ percent in
                                     Text("\(percent * 5)%").tag(percent * 5)
-                                    
                                     
                                 }
                                 
                             }
+                            
 
                         }
                         HStack{
                             Text("Protein:")
-                            Picker("", selection: $setProtein){
+                            Picker("", selection: $dummmyProtein){
                                 ForEach(0..<21, id: \.self){ percent in
                                     Text("\(percent * 5)%").tag(percent * 5)
                                     
@@ -69,7 +71,7 @@ struct SetUserGoalsView: View {
                         }
                         HStack{
                             Text("Fats:")
-                            Picker("", selection: $setFats){
+                            Picker("", selection: $dummmyFats){
                                 ForEach(0..<21, id: \.self){ percent in
                                     Text("\(percent * 5)%").tag(percent * 5)
                                     
@@ -77,24 +79,27 @@ struct SetUserGoalsView: View {
                             }
 
                         }
-                        Button{
-                            if percentSum != 100{
+                        Button {
+                            if percentSum != 100 {
                                 showPercentAlert = true
+                            } else {
+                                setProtein = Int((Double(dummmyProtein) / 100.0) * Double(setCalories) / 4.0)
+                                setCarbs = Int((Double(dummmyCarbs) / 100.0) * Double(setCalories) / 4.0)
+                                setFats = Int((Double(dummmyFats) / 100.0) * Double(setCalories) / 9.0)
+                                print(setCarbs) // For debugging
                             }
-  
                         } label: {
-                            HStack{
+                            HStack {
                                 Spacer()
-                                Button{
+                                Button {
                                     showHomeButton = true
-                                }label:{
+                                } label: {
                                     CircleLogButton(user_color1: Color.green, user_color2: Color.green, icon: "checkmark", noPortal: true)
                                 }
                                 Spacer()
-                                
                             }
-
                         }
+
                         .alert("Macro distribution must equal 100%", isPresented: $showPercentAlert){
                             Button("Ok", role: .cancel){}
                         }

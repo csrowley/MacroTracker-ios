@@ -24,7 +24,7 @@ struct EnterMealView: View {
                     ForEach(dailyMeals, id: \.self) { dailyMeal in
                         Text(dailyMeal)
                     }
-                }
+                } 
                 
                 HStack {
                     Text("Meal Name:")
@@ -73,9 +73,8 @@ struct EnterMealView: View {
                                let carbs = Int(viewModel.carbData),
                                let fats = Int(viewModel.fatData),
                                let servings = Int(viewModel.servingAmount){
-                            
                                 
-//                                logUserMacro(cals: cals * servings, protein: protein * servings, carb: carbs * servings, fat: fats * servings)
+                                logUserMacros(uMeal: viewModel.selectedMeal, uName: viewModel.mealName, cals: cals * servings, protein: protein * servings, carb: carbs * servings, fat: fats * servings)
                             } else {
                                 showAlert = true
                             }
@@ -89,11 +88,6 @@ struct EnterMealView: View {
                     }
                 }
             }
-//            .toolbar{
-//                Button("Clear Logs"){
-//                    Text("h)")
-//                }
-//            }
         }
         .font(Font.custom("Lato", size: 18)) // Set your custom font and size
 
@@ -102,7 +96,23 @@ struct EnterMealView: View {
  
     }
     
-    func logUserMacros() {
+    func logUserMacros(uMeal: String, uName: String, cals: Int, protein: Int, carb: Int, fat: Int) {
+        let userMacroEntry = MacroEntry(meal: uMeal, name: uName, entryCals: cals, entryProtein: protein, entryCarb: carb, entryFat: fat)
+        
+        //Enter into storage
+        if let todaysLog = allDays.first{
+            let mealTypeDict = [
+                "breakfast" : todaysLog.breakfast,
+                "lunch" : todaysLog.lunch,
+                "dinner" : todaysLog.dinner,
+                "snacks" : todaysLog.snacks
+            ]
+            
+            mealTypeDict[uMeal]?.entries.append(userMacroEntry)
+        }
+        
+        
+        //Update progress to show on homescreen
         
     }
     

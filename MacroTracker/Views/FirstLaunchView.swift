@@ -13,6 +13,11 @@ struct FirstLaunchView: View {
     @Environment(\.modelContext) var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries]
     
+    @AppStorage("calProgress") private var calProgress: Int = 0
+    @AppStorage("proteinProgress") private var proteinProgress: Int = 0
+    @AppStorage("carbProgress") private var carbProgress: Int = 0
+    @AppStorage("fatProgress") private var fatProgress: Int = 0
+    
     
     @AppStorage("showHome") private var showHomeButton: Bool = false
     var body: some View {
@@ -34,7 +39,8 @@ struct FirstLaunchView: View {
                     NavigationLink(destination: EmptyView()){
                         Button{
                             initalizeUserStorage()
-                            print(allDays)
+//                            print(allDays)
+//                            print(allDays.first?.date)
                             dismiss()
                         } label: {
                             CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "house", noPortal: true)
@@ -61,7 +67,16 @@ struct FirstLaunchView: View {
     }
     
     func initalizeUserStorage(){
-        let firstDailyEntry = DailyEntries(breakfast: Meals(meals: "breakfast"), lunch: Meals(meals: "lunch"), dinner: Meals(meals: "dinner"), snacks: Meals(meals: "snacks"))
+        let firstDailyEntry = DailyEntries(
+            cals: calProgress,
+            protein: proteinProgress,
+            carb: carbProgress,
+            fat: fatProgress,
+            breakfast: Meals(meals: "breakfast"),
+            lunch: Meals(meals: "lunch"),
+            dinner: Meals(meals: "dinner"),
+            snacks: Meals(meals: "snacks")
+        )
         context.insert(firstDailyEntry)
     }
 }

@@ -13,6 +13,7 @@ extension HomePage{
     
     @Observable
     class ViewModel {
+        
         let lavander = UIColor(red: 0.827, green: 0.827, blue: 1, alpha: 1)
         let ivory = UIColor(red: 1.0, green: 1.0, blue: 0.89, alpha: 1.0)
         let royal_blue = UIColor(red: 48/255.0, green: 92/255.0, blue: 222/255.0, alpha: 1.0)

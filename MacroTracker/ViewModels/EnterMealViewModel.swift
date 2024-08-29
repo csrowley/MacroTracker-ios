@@ -20,8 +20,11 @@ extension EnterMealView{
         var servingAmount: String = "1"
         
         
-        private func enterUserMeal() {
-            
-        }
+//        func addProgress(cals: Int, protein: Int, carbs: Int, fats: Int){
+//            calProgress += cals
+//            proteinProgress += protein
+//            fatProgress += fats
+//            carbProgress += carbs
+//        }
     }
 }
