@@ -17,7 +17,7 @@ struct ProgressBar: View {
             GeometryReader { geometry in
                 RoundedRectangle(cornerRadius: 10)
                     .fill(user_color)
-                    .frame(width: CGFloat(progress) * geometry.size.width, height: 20)
+                    .frame(width: CGFloat(min(max(progress, 0), 1)) * geometry.size.width, height: 20)
             }
             .frame(height: 20) // Make sure to set the height here
             .animation(.easeOut, value: progress)
@@ -36,5 +36,5 @@ struct ProgressBar: View {
 }
 
 #Preview {
-    ProgressBar(progress: 0.50, macros: 2500, user_color: Color.pink)
+    ProgressBar(progress: 0.8, macros: 2500, user_color: Color.pink)
 }

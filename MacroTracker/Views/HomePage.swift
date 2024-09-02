@@ -4,24 +4,29 @@ import SwiftData
 struct HomePage: View {
     @AppStorage("firstTimeLaunch") private var checkFirstLaunch: Bool = true
     @AppStorage("showHome") private var showHomeButton: Bool = false
-    @AppStorage("setCalories") private var dailyCals: Int = 2600
-    @AppStorage("setProtein") private var dailyProteins: Int = 100
-    @AppStorage("setCarbs") private var dailyCarbs: Int = 100
-    @AppStorage("setFats") private var dailyFats: Int = 100
+    
+    
+    @AppStorage("setCalories") private var dailyCals: Int?
+    @AppStorage("setProtein") private var dailyProteins: Int?
+    @AppStorage("setCarbs") private var dailyCarbs: Int?
+    @AppStorage("setFats") private var dailyFats: Int?
     
 //    @AppStorage("calProgress") private var calProgress: Int = 0
-//    @AppStorage("proteinProgress") private var proteinProgress: Int?
-//    @AppStorage("carbProgress") private var carbProgress: Int?
-//    @AppStorage("fatProgress") private var fatProgress: Int?
+
     
     @State private var viewModel = ViewModel()
     @Environment(\.modelContext) private var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries] // Query to fetch all logs
     
-
-    
-    
+    @AppStorage("calProgress") private var calorieProgress: Int?
+    @AppStorage("proteinProgress") private var proteinProgress: Int?
+    @AppStorage("carbProgress") private var carbProgress: Int?
+    @AppStorage("fatProgress") private var fatProgress: Int?
+    @State private var test = 0
+    @State private var refreshTrigger = false
     @State var isPresented_Log = false
+    @State var showLogView = false
+    
     
     let lavander = UIColor(red: 0.827, green: 0.827, blue: 1, alpha: 1)
     let ivory = UIColor(red: 1.0, green: 1.0, blue: 0.89, alpha: 1.0)
@@ -40,6 +45,20 @@ struct HomePage: View {
         
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        if calorieProgress == nil{
+            calorieProgress = 0
+        }
+        if proteinProgress == nil{
+            proteinProgress = 0
+        }
+        if carbProgress == nil{
+            proteinProgress = 0
+            
+        }
+        if fatProgress == nil{
+            fatProgress = 0
+        }
     }
     
     var body: some View {
@@ -57,41 +76,80 @@ struct HomePage: View {
                                 )
                             HStack{
                                 Spacer()
-                                var checkCalProgress = allDays.first?.calProgress ?? 0
-                                CircleProgressBar(progress: checkCalProgress, calories: abs(dailyCals - checkCalProgress), user_color: Color(lavander))
-                                    .frame(width: 250, height: 225)
+                                var unwrappedCals = dailyCals ?? 1
+                                CircleProgressBar(progress: Double(calorieProgress ?? 1) / Double(unwrappedCals),
+                                                 calories: abs(unwrappedCals - (calorieProgress ?? 0)),
+                                                 user_color: Color(lavander))
+
+                                
+
                                 Spacer()
                             }
+                            Button("reset"){
+                                if let _ = calorieProgress{
+                                    calorieProgress! = 0
+                                }
+                                else{
+                                    calorieProgress = 0
+                                }
+                            }
+                            Spacer()
                         }
+                        
                     }
                     
                     
                     Section {
+                        Button("press"){
+                            if let _ = calorieProgress{
+                                calorieProgress! += 200
+                            }
+                            else{
+                                calorieProgress = 300
+                            }
+                        }
                         VStack {
                             HStack {
                                 Text("Protein")
                                 Spacer()
                             }
-                            var checkProteinProgress = allDays.first?.proteinProgress ?? 0
-                            ProgressBar(progress: Double(checkProteinProgress / 100), macros: abs(checkProteinProgress - dailyProteins), user_color: Color(scarlet))
+                            
+                            var unwrappedProtein = (dailyProteins ?? 1)
+                            
+                            ProgressBar(progress: Double(proteinProgress ?? 1) / Double(unwrappedProtein), macros: abs((proteinProgress ?? 0) - unwrappedProtein), user_color: Color(scarlet))
                         }
                         VStack {
                             HStack {
                                 Text("Carbs")
                                 Spacer()
                             }
-                            var checkCarbProgress = allDays.first?.carbProgress ?? 0
-                            ProgressBar(progress: Double(checkCarbProgress / 100), macros: abs(checkCarbProgress - dailyCarbs), user_color: Color(royal_blue))
+                            var unwrappedCarbs = (dailyCarbs ?? 1)
+                            
+                            ProgressBar(progress: Double(carbProgress ?? 1) / Double(unwrappedCarbs), macros: abs((carbProgress ?? 0) - unwrappedCarbs), user_color: Color(royal_blue))
                         }
                         VStack {
                             HStack {
                                 Text("Fats")
                                 Spacer()
                             }
-                            var checkFatProgress = allDays.first?.fatProgress ?? 0
-                            ProgressBar(progress: Double(checkFatProgress / 100), macros: abs(checkFatProgress - dailyFats), user_color: Color(tangerine))
+                            let unwrappedFats = (dailyFats ?? 1)
+
+                            ProgressBar(progress: Double(fatProgress ?? 1) / Double(unwrappedFats), macros: abs((fatProgress ?? 0) - unwrappedFats), user_color: Color(tangerine))
                         }
                     }
+//                    .onAppear{
+////                        let checkProteinProgress = allDays.first?.proteinProgress ?? 1
+////                        let unwrappedProtein = (dailyProteins ?? 1)
+////                        self.proteinProgress = Double(checkProteinProgress / unwrappedProtein)
+////                        
+////                        var checkCarbProgress = allDays.first?.carbProgress ?? 1
+////                        var unwrappedCarbs = (dailyCarbs ?? 1)
+////                        self.carbProgress = Double(checkCarbProgress / unwrappedCarbs)
+////                        
+////                        var checkFatProgress = allDays.first?.fatProgress ?? 1
+////                        var unwrappedFats = (dailyFats ?? 1)
+////                        self.fatProgress = Double(checkFatProgress / unwrappedFats)
+//                    }
 
                     .scrollContentBackground(.hidden)
                     
@@ -103,14 +161,43 @@ struct HomePage: View {
                 
                 
                 HStack{
-                    Button("press"){
-                        checkFirstLaunch.toggle()
-                        showHomeButton.toggle()
+//                    
+//                    Button("press"){
+//                        checkFirstLaunch.toggle()
+//                        showHomeButton.toggle()
+//                        
+//                    }
+                    
+                    var reset_instruction = {
+                        print("Before reset: \(calorieProgress ?? 0), \(proteinProgress ?? 0), \(fatProgress ?? 0), \(carbProgress ?? 0)")
                         
+                        calorieProgress = 0
+                        proteinProgress = 0
+                        fatProgress = 0
+                        carbProgress = 0
+                        
+                        print("After reset: \(calorieProgress ?? 0), \(proteinProgress ?? 0), \(fatProgress ?? 0), \(carbProgress ?? 0)")
+                        
+                        let newDailyEntry = DailyEntries(
+                            breakfast: Meals(meals: "breakfast"),
+                            lunch: Meals(meals: "lunch"),
+                            dinner: Meals(meals: "dinner"),
+                            snacks: Meals(meals: "snacks")
+                        )
+                        context.insert(newDailyEntry)
                     }
-                    ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+                    
+
+                    ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, instruction: reset_instruction)
+
                     CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "plus", noPortal: false)
-                    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+                    
+                    
+                    NavigationLink(destination: LoggedFoodsView(), isActive: $showLogView){EmptyView()}
+                    
+                    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, toggleView: $showLogView)
+
+                        
 
                 }
                 
@@ -146,15 +233,11 @@ struct HomePage: View {
         
 
     }
-    	
-//    func addProgress(cals: Int, protein: Int, carbs: Int, fats: Int){
-//        if let calProgress,
-//           let proteinProgress,
-//           let carbProgress,
-//           let fatProgress{
-//            
-//        }
+    
+//    func resetAndCreateNewLog(){
+//        
 //    }
+    	
 }
 
 

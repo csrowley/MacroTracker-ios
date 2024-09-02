@@ -41,6 +41,10 @@ struct FirstLaunchView: View {
                             initalizeUserStorage()
 //                            print(allDays)
 //                            print(allDays.first?.date)
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                                dismiss()
+//                            }
+                            
                             dismiss()
                         } label: {
                             CircleLogButton(user_color1: Color.purple, user_color2: Color.blue, icon: "house", noPortal: true)
@@ -68,10 +72,10 @@ struct FirstLaunchView: View {
     
     func initalizeUserStorage(){
         let firstDailyEntry = DailyEntries(
-            cals: calProgress,
-            protein: proteinProgress,
-            carb: carbProgress,
-            fat: fatProgress,
+//            cals: calProgress,
+//            protein: proteinProgress,
+//            carb: carbProgress,
+//            fat: fatProgress,
             breakfast: Meals(meals: "breakfast"),
             lunch: Meals(meals: "lunch"),
             dinner: Meals(meals: "dinner"),

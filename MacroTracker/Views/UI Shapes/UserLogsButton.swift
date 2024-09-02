@@ -11,23 +11,18 @@ struct UserLogsButton: View {
     @State private var animation_count = 1.0
     @State private var isPresented_Log = false
     
+    
     let user_color1: Color
     let user_color2: Color
-    let noPortal: Bool
+    @Binding var toggleView: Bool
     
     var body: some View {
         Button {
             animation_count += 1
-            if noPortal == false{
-                isPresented_Log = true
-            }
-            else{
-                
-            }
+            toggleView = true
+
         } label: {
-            HStack{
-                Image(systemName: "book.pages.fill")
-            }
+            Image(systemName: "book.pages.fill")
         }
         .symbolEffect(.bounce, value: animation_count)
         
@@ -65,5 +60,5 @@ struct UserLogsButton: View {
 }
 
 #Preview {
-    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+    UserLogsButton(user_color1: Color.purple, user_color2: Color.blue, toggleView: .constant(false))
 }

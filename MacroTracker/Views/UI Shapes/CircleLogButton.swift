@@ -44,10 +44,10 @@ struct CircleLogButton: View {
                 .scaleEffect(animation_count)
                 .opacity(2 - animation_count)
         )
-        .animation(
-            .easeInOut(duration: 1),
-            value: animation_count
-        )
+//        .animation(
+//            .easeInOut(duration: 1),
+//            value: animation_count
+//        )
         .shadow(color: .black.opacity(0.2), radius: 20, x:0, y:10)
         .shadow(color: .black.opacity(0.4), radius: 5, x:0, y:2)
         .sheet(isPresented: $isPresented_Log) {

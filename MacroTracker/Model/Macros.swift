@@ -61,25 +61,25 @@ class Meals{
 @Model
 class DailyEntries{
     @Attribute(.unique) var uid: UUID
-    @Attribute(.unique) var date: Date
+    @Attribute var date: Date
     
     @Relationship(deleteRule: .cascade) var breakfast: Meals
     @Relationship(deleteRule: .cascade) var lunch: Meals
     @Relationship(deleteRule: .cascade) var dinner: Meals
     @Relationship(deleteRule: .cascade) var snacks: Meals
     
-    @Attribute var calProgress: Int
-    @Attribute var proteinProgress: Int
-    @Attribute var carbProgress: Int
-    @Attribute var fatProgress: Int
+//    @Attribute var calProgress: Int
+//    @Attribute var proteinProgress: Int
+//    @Attribute var carbProgress: Int
+//    @Attribute var fatProgress: Int
     
-    init(uid: UUID = UUID(), date: Date = Date(), cals: Int, protein: Int, carb: Int, fat: Int, breakfast: Meals, lunch: Meals, dinner: Meals, snacks: Meals) {
+    init(uid: UUID = UUID(), date: Date = Date(), /* cals: Int, protein: Int, carb: Int, fat: Int,*/ breakfast: Meals, lunch: Meals, dinner: Meals, snacks: Meals) {
         self.uid = uid
         self.date = stripTime(from: date)
-        self.calProgress = cals
-        self.proteinProgress = protein
-        self.fatProgress = fat
-        self.carbProgress = carb
+//        self.calProgress = cals
+//        self.proteinProgress = protein
+//        self.fatProgress = fat
+//        self.carbProgress = carb
         
         self.breakfast = breakfast
         self.lunch = lunch

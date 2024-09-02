@@ -13,23 +13,17 @@ struct ResetLogButton: View {
     
     let user_color1: Color
     let user_color2: Color
-    let noPortal: Bool
+    let instruction: (() -> Void)
     
     var body: some View {
         Button {
+            isPresented_Log.toggle()
             animation_count += 1
-            if noPortal == false{
-                isPresented_Log = true
-            }
-            else{
-                
-            }
+
         } label: {
-            HStack{
-                Image(systemName: "trash.fill")
-            }
+            Image(systemName: "trash.fill")
         }
-        .symbolEffect(.bounce, value: animation_count)
+//        .symbolEffect(.bounce, value: animation_count)
         
         
         .font(.title)
@@ -54,16 +48,23 @@ struct ResetLogButton: View {
                 .scaleEffect(animation_count)
                 .opacity(2 - animation_count)
         )
-        .animation(
-            .easeInOut(duration: 1),
-            value: animation_count
-        )
+//        .animation(
+//            .easeInOut(duration: 1),
+//            value: animation_count
+//        )
         .shadow(color: .black.opacity(0.2), radius: 20, x:0, y:10)
         .shadow(color: .black.opacity(0.4), radius: 5, x:0, y:2)
+        .alert(isPresented: $isPresented_Log){
+            Alert(
+                title: Text("⚠️ Warning!"),
+                message: Text("Pressing this will reset your daily calorie progress. Are you sure to continue?"),
+                primaryButton: .destructive(Text("Yes"), action: {instruction()}),
+                secondaryButton: .cancel())
+        }
 
     }
 }
 
 #Preview {
-    ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, noPortal: false)
+    ResetLogButton(user_color1: Color.purple, user_color2: Color.blue, instruction: {print("h")})
 }

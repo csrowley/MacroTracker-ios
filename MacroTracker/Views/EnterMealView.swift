@@ -2,6 +2,16 @@ import SwiftUI
 import SwiftData
 
 struct EnterMealView: View {
+    @AppStorage("calProgress") private var calorieProgress: Int?
+    @AppStorage("proteinProgress") private var proteinProgress: Int?
+    @AppStorage("carbProgress") private var carbProgress: Int?
+    @AppStorage("fatProgress") private var fatProgress: Int?
+    
+//    @AppStorage("setCalories") private var dailyCals: Int?
+//    @AppStorage("setProtein") private var dailyProteins: Int?
+//    @AppStorage("setCarbs") private var dailyCarbs: Int?
+//    @AppStorage("setFats") private var dailyFats: Int?
+    
     @Environment(\.modelContext) private var context
     @Query(sort: \DailyEntries.date, order: .reverse) var allDays: [DailyEntries] // Query to fetch all logs
     
@@ -108,12 +118,37 @@ struct EnterMealView: View {
                 "snacks" : todaysLog.snacks
             ]
             
+//            if mealTypeDict[umeal]
             mealTypeDict[uMeal]?.entries.append(userMacroEntry)
+            
+            addProgress(cals: cals, protein: protein, carbs: carb, fats: fat)
         }
-        
+        addProgress(cals: cals, protein: protein, carbs: carb, fats: fat)
+
         
         //Update progress to show on homescreen
         
+    }
+    
+    func addProgress(cals: Int, protein: Int, carbs: Int, fats: Int){
+        if let unwrapCal = calorieProgress,
+           let unwrapProtein = proteinProgress,
+           let unwrapCarbs = carbProgress,
+           let unwrapFats = fatProgress{
+//           let tCals = dailyCals,
+//           let tProtein = dailyProteins,
+//           let tCarbs = dailyCarbs,
+//           let tFats = dailyFats{
+            
+//            print(calorieProgress!)
+            
+            calorieProgress! += cals
+            proteinProgress! += protein
+            carbProgress! += carbs
+            fatProgress! += fats
+            
+//            print(calorieProgress!)
+        }
     }
     
 }

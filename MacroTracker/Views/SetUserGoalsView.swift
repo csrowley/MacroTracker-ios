@@ -86,7 +86,7 @@ struct SetUserGoalsView: View {
                                 setProtein = Int((Double(dummmyProtein) / 100.0) * Double(setCalories) / 4.0)
                                 setCarbs = Int((Double(dummmyCarbs) / 100.0) * Double(setCalories) / 4.0)
                                 setFats = Int((Double(dummmyFats) / 100.0) * Double(setCalories) / 9.0)
-                                print(setCarbs) // For debugging
+//                                print(setCarbs) // For debugging
                             }
                         } label: {
                             HStack {
