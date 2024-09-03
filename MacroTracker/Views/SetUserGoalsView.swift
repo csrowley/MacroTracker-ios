@@ -40,9 +40,9 @@ struct SetUserGoalsView: View {
                         HStack{
                             Text("Calories:")
                             TextField("\(setCalories)", text: $strCals)
-                                .onChange(of: strCals){ newVal in
-                                    setCalories = Int(newVal) ?? 0
-                                }
+//                                .onChange(of: strCals){ newVal in
+//                                    setCalories = Int(newVal) ?? 0
+//                                }
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
                                 .foregroundColor(.blue)
@@ -83,10 +83,20 @@ struct SetUserGoalsView: View {
                             if percentSum != 100 {
                                 showPercentAlert = true
                             } else {
+                                print("before")
+                                print(setCarbs) // For debugging
+                                print(setProtein)
+                                print(setFats)
+                                print("\n")
+                                setCalories = Int(strCals) ?? 1
                                 setProtein = Int((Double(dummmyProtein) / 100.0) * Double(setCalories) / 4.0)
                                 setCarbs = Int((Double(dummmyCarbs) / 100.0) * Double(setCalories) / 4.0)
                                 setFats = Int((Double(dummmyFats) / 100.0) * Double(setCalories) / 9.0)
-//                                print(setCarbs) // For debugging
+                                print("after")
+                                print(setCarbs) // For debugging
+                                print(setProtein)
+                                print(setFats)
+                                print("\n")
                             }
                         } label: {
                             HStack {

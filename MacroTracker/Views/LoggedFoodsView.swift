@@ -10,7 +10,7 @@ import SwiftData
 
 struct LoggedFoodsView: View {
     @Environment(\.modelContext) private var context
-    @Query(sort: \MacroEntry.uid, order: .reverse) var allLogs: [MacroEntry]
+    @Query(sort: \DailyEntries.date, order: .reverse) var allLogs: [DailyEntries]
     
     @State private var viewedDate: String = "Today"
     var body: some View {
@@ -18,10 +18,18 @@ struct LoggedFoodsView: View {
 
             List{
                 Section {
-                    Text("Test")
-                    ForEach(allLogs){ log in
-                        Text("\(log.entryCals) - \(log.entryDate)")
+                    if let todayLog = allLogs.first{
+                        var todaysBreakfast = todayLog.breakfast
+                        ForEach(todaysBreakfast.entries) { meal in
+                            Text("\(meal.name) : Cals: \(meal.entryCals) Carbs: \(meal.entryCarb)")
+                        }
                     }
+                    else{
+                        Text("No content available currently")
+                    }
+//                    ForEach(todaysLog){ log in
+//                        Text("\(log.uid)")
+//                    }
                 }
             }
 

@@ -78,13 +78,18 @@ struct EnterMealView: View {
                     HStack {
                         Spacer()
                         Button{
-                            if let cals = Int(viewModel.calData),
-                               let protein = Int(viewModel.proteinData),
+                            if let calors = Int(viewModel.calData),
+                               let proteins = Int(viewModel.proteinData),
                                let carbs = Int(viewModel.carbData),
                                let fats = Int(viewModel.fatData),
                                let servings = Int(viewModel.servingAmount){
                                 
-                                logUserMacros(uMeal: viewModel.selectedMeal, uName: viewModel.mealName, cals: cals * servings, protein: protein * servings, carb: carbs * servings, fat: fats * servings)
+                                logUserMacros(uMeal: viewModel.selectedMeal, uName: viewModel.mealName, cals: calors * servings, protein: proteins * servings, carb: carbs * servings, fat: fats * servings)
+                                
+                                print("after servings")
+                                print(servings)
+                                print(calors * servings)
+                                print(proteins * servings)
                             } else {
                                 showAlert = true
                             }
@@ -99,9 +104,9 @@ struct EnterMealView: View {
                 }
             }
         }
-        .font(Font.custom("Lato", size: 18)) // Set your custom font and size
+        .font(Font.custom("Lato", size: 18))
 
-        .background(Color(UIColor.systemGray6)) // Match the background color
+        .background(Color(UIColor.systemGray6))
         
  
     }
@@ -118,15 +123,10 @@ struct EnterMealView: View {
                 "snacks" : todaysLog.snacks
             ]
             
-//            if mealTypeDict[umeal]
             mealTypeDict[uMeal]?.entries.append(userMacroEntry)
             
             addProgress(cals: cals, protein: protein, carbs: carb, fats: fat)
         }
-        addProgress(cals: cals, protein: protein, carbs: carb, fats: fat)
-
-        
-        //Update progress to show on homescreen
         
     }
     
