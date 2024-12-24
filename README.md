@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Macrometer for IOS (In Progress)</h1>
+  <h1>Macrometer for IOS</h1>
 </div>
 
 ## Description
